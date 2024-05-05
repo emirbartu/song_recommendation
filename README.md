@@ -6,3 +6,6 @@ https://www.kaggle.com/code/vatsalmavani/music-recommendation-system-using-spoti
 Kaggle projesi geliştirilerek daha çok kullanıcı odaklı bir deneyim oluşturulmaya çalışılmıştır ve Gradio ile web formatına aktarılmıştır.
 
 Detaylar için ipynb dosyasını inceleyin.
+
+Prototip
+https://b9918e87ffdb99b9c7.gradio.live/
