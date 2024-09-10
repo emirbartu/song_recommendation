@@ -58,7 +58,7 @@ A prototype of the application is available at: https://b9918e87ffdb99b9c7.gradi
 Contributions to improve fizy_muzik_onerme are welcome. Please feel free to submit pull requests or open issues to discuss potential enhancements.
 
 ## License
-[Include license information here]
+[MIT]
 
 ## Acknowledgements
 - Original Kaggle project by Vatsal Mavani
