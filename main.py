@@ -1,50 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import os
-import sys
 import logging
-from tempfile import NamedTemporaryFile
-from urllib.request import urlopen
-from urllib.parse import unquote, urlparse
-from urllib.error import HTTPError
-from zipfile import ZipFile
-import tarfile
-import shutil
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
-import torch
+from data_processing import process_data
+from chatbot_interface import launch_chatbot
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-CHUNK_SIZE = 40960
-DATA_SOURCE_MAPPING = 'spotify-dataset:https%3A%2F%2Fstorage.googleapis.com%2Fkaggle-data-sets%2F1800580%2F2936818%2Fbundle%2Farchive.zip%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dgcp-kaggle-com%2540kaggle-161607.iam.gserviceaccount.com%252F20240505%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20240505T010052Z%26X-Goog-Expires%3D259200%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D7a095318cf8957bfd4914ad66ca3cc13ddf6bc1134cf7c51390b61242cb24b66a2ed57ef750e7985bb85d9ed9f605a5beb55ae65f822c9e313095e749aaa7e918d628438b6688d56e5dfb1348ae56cffea9f624619eada59e74a67920b51ec08f6daf795e9d06257346ea5cf0be1b3f09106afdbd2a7add2d459df99e0e61b6917617b22d690d548475f625f1c8bc5b8e62a6965b1df59eec070eeaed6b20ed970c213a041584dc06a4ce3b2f25f470bdb63b6000f1b337efc162760ff4dc44fd0649313fb80397b35a34a64ce13ea1c7039f389e04d2b8c024f12adb6a2adbc218a7f8e63b30f11de6479b6f73a99b3f9d45a55b48bb6f73b5e0b6a9c024774'
-
-KAGGLE_INPUT_PATH = './kaggle/input'
-KAGGLE_WORKING_PATH = './kaggle/working'
-
-# Initialize language model
-MODEL_NAME = "distilgpt2"  # A smaller, faster model for demonstration
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
-nlp = pipeline("text-generation", model=model, tokenizer=tokenizer)
-
-def setup_directories():
-    """Set up the necessary directories for the project."""
-    shutil.rmtree(KAGGLE_INPUT_PATH, ignore_errors=True)
-    os.makedirs(KAGGLE_INPUT_PATH, exist_ok=True)
-    os.makedirs(KAGGLE_WORKING_PATH, exist_ok=True)
-
-    for path, name in [(KAGGLE_INPUT_PATH, 'input'), (KAGGLE_WORKING_PATH, 'working')]:
-        try:
-            os.symlink(path, os.path.join("..", name), target_is_directory=True)
-        except FileExistsError:
-            logging.warning(f"Symlink for {name} already exists.")
-
 def main():
     """Main function to run the script."""
-    setup_directories()
-    # Add other main functions here as we refactor the code
+    # Load and process data
+    datasets = process_data()
+
+    if datasets:
+        # Launch the chatbot interface
+        launch_chatbot()
+    else:
+        logging.error("Failed to load datasets. Please check the data processing module.")
 
 if __name__ == "__main__":
     main()
