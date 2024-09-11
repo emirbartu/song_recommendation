@@ -32,11 +32,24 @@ The project has been refactored for improved modularity and maintainability:
    ```
    pip install -r requirements.txt
    ```
+4. Set up the .env file:
+   - Create a file named `.env` in the root directory of the project
+   - Obtain Spotify API credentials:
+     a. Go to https://developer.spotify.com/ and log in or create an account
+     b. Create a new application to get your `client_id` and `client_secret`
+   - Add your Spotify API credentials to the `.env` file in the following format:
+     ```
+     SPOTIFY_CLIENT_ID=your_client_id_here
+     SPOTIFY_CLIENT_SECRET=your_client_secret_here
+     ```
+   - Keep your `.env` file secure and never share it publicly
+   - Note: The `.env` file is crucial for the project to interact with the Spotify API
 
 ## How to Use
-1. Ensure you have the necessary Spotify API credentials:
-   - Create a Spotify Developer account and obtain your `client_id` and `client_secret`
-   - Set these as environment variables or update them in the `recommendation.py` file
+1. Obtain Spotify API credentials:
+   - Create a Spotify Developer account at https://developer.spotify.com/
+   - Create a new application to get your `client_id` and `client_secret`
+   - Add these credentials to your `.env` file as described in the installation steps
 
 2. Prepare your data:
    - Place the Spotify dataset CSV files in the `./data/` directory

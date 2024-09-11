@@ -10,3 +10,4 @@ spotipy
 gradio
 transformers
 torch
+python-dotenv
