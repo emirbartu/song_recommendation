@@ -1,7 +1,4 @@
-# fizy_muzik_onerme (Music Recommendation System)
-
-## Project Overview
-fizy_muzik_onerme is an advanced music recommendation system developed for the Turkcell Hackathon Fizy application. This project extends a Kaggle-based music recommendation system, enhancing it with a user-focused experience and integrating a chatbot interface using Gradio. The system leverages machine learning techniques and the Spotify API to provide personalized music recommendations through an interactive chatbot.
+# song_recommendation (Music Recommendation System)
 
 ## File Structure
 The project has been refactored for improved modularity and maintainability:
@@ -89,7 +86,7 @@ This project is continuously evolving. Future plans include:
 - Integration with more music streaming platforms
 
 ## Visualization for Researchers
-While the main functionality of fizy_muzik_onerme focuses on the chatbot interface and music recommendations, the project originally included various data visualization features that may be of interest to researchers in the field of music information retrieval and recommendation systems.
+While the main functionality of song_recommendation repo focuses on the chatbot interface and music recommendations, the project originally included various data visualization features that may be of interest to researchers in the field of music information retrieval and recommendation systems.
 
 These visualization features, although not part of the main chatbot functionality, can provide valuable insights into music trends, genre characteristics, and the underlying structure of the dataset. They include:
 
